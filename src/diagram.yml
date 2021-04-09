@@ -1,0 +1,37 @@
+  @startuml
+    abstract UserSocketCreator{
+    {abstract} IUserSocket createUser()
+    registerUser();
+  }
+
+    class UdpUserSocketCreator{
+    UdpUserSocket createUser()
+  }
+
+    class TcpUserSocketCreator{
+    TcpUserSocket createUser()
+  }
+
+    interface IUserSocket{
+    sendData()
+  }
+
+    class TcpUserSocket{
+
+  }
+
+    class UdpUserSocket{
+
+  }
+
+    UserSocketCreator <|-- UdpUserSocketCreator
+    UserSocketCreator <|-- TcpUserSocketCreator
+
+    IUserSocket <|.. TcpUserSocket
+    IUserSocket <|.. UdpUserSocket
+
+    UdpUserSocketCreator ..* UdpUserSocket
+    TcpUserSocketCreator ..* TcpUserSocket
+
+
+    @enduml
